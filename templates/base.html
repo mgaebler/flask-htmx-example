@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Example</title>
+    <script src="{{ url_for('static', filename='htmx.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='matcha.css') }}">
+</head>
+
+<body>
+    <nav>
+        <menu>
+            <li>
+                <a href="/" hx-boost="true" hx-target="#container" hx-swap="outerHTML" hx-select="#container">
+                    🏠 Home
+                </a>
+            </li>
+            <li>
+                <a href="/search" hx-boost="true" hx-target="#container" hx-swap="outerHTML" hx-select="#container">
+                    🔎 Search
+                </a>
+            </li>
+        </menu>
+    </nav>
+    <div id="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+
+</html>

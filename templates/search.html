@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    @keyframes spin {
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    #spinner {
+        animation: spin 1s linear infinite;
+    }
+</style>
+
+<h1>Search</h1>
+<form id="search-form">
+    <input type="text" name="query" id="search-input" placeholder="Search for a fruit..." hx-get="/search"
+        hx-target="#results" hx-trigger="keyup changed delay:500ms" hx-push-url="true" hx-indicator="#spinner">
+</form>
+
+<img id="spinner" class="htmx-indicator" src="{{ url_for('static', filename='spinner.svg') }}" alt="spinner" />
+<div id="results"></div>
+{% endblock %}
